@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {  postRegister } from "../../services/Services";
+import {  postSignUp } from "../../services/Services";
+import { BeatLoader } from "react-spinners";
 
 export default function SignUp() {
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
@@ -19,13 +20,14 @@ export default function SignUp() {
 
         const body = { ...form }
 
-        postRegister(body)
+        postSignUp(body)
             .then(res => {
                 setResponseVerification(res.data)
                 navigate("/");
             })
             .catch(err => {
-                alert(err.message)
+                //alert(err.message)
+                alert("erro")
                 setDisabled(false)
             })
         if (responseVerification === undefined) {
@@ -35,7 +37,7 @@ export default function SignUp() {
 
     return (
         <Container>
-            <Title>My Wallet</Title>
+            <Title>MyWallet</Title>
             <Form onSubmit={register}>
                 <input
                     name="name"
@@ -73,7 +75,17 @@ export default function SignUp() {
                     disabled={disabled}
                     required
                 />
-                <button ype="submit" disabled={disabled}>Cadastrar</button>
+                    <button type="submit" disabled={disabled}>
+                    {disabled ?
+                        <BeatLoader
+                            size={12}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                            color="#ffffff"
+                            timeout={3000}
+                        />
+                        : 'Cadastrar'}
+                </button>
                 <StyledLink to={"/"}>Já tem uma conta? Entre agora!</StyledLink>
             </Form>
 
@@ -116,6 +128,7 @@ const Form = styled.div`
 const Title = styled.h1`
     display:flex;
     justify-content: center;
+    align-items: center;
     margin-top:50px;
     font-size:35px;
     color: #FFFFFF;
@@ -123,8 +136,10 @@ const Title = styled.h1`
 `
 const StyledLink = styled(Link)`
     margin-top:5%;
-    margin-left:15%;
-    font-size:14px;
+    margin-left:12%;
+    font-size:15px;
+    font-weight: bold;
     color: #FFFFFF;
     text-decoration: none;
+    font-family: 'Raleway', sans-serif;
 `
