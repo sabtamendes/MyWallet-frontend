@@ -5,21 +5,22 @@ import SignIn from "./components/Sign-in/SignIn";
 import SignUp from "./components/Sign-up/SignUp";
 import Registries from "./components/Registries/Registries";
 import NewEnter from "./components/Registries/NewEnter";
-import { useState } from "react";
+import NewOut from "./components/Registries/NewOut";
+
 
 function App() {
-  const [loginResponse, setLoginResponse] = useState(undefined);
+
   return (
-    <UserContext.Provider value={{ loginResponse, setLoginResponse }} >
+    <UserContext.Provider >
     <Router>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<SignIn loginResponse={loginResponse} setLoginResponse={setLoginResponse}/>} />
+        <Route path="/" element={<SignIn />} />
         <Route path="/cadastro" element={<SignUp />} />
         <Route path="/registros" element={<Registries />} />
         <Route path="/novaentrada" element={<NewEnter />} />
+        <Route path="/novasaida" element={<NewOut/>} />
       </Routes>
-      
     </Router>
     </UserContext.Provider>
   );
