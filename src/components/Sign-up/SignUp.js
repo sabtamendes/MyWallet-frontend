@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {  postSignUp } from "../../services/Services";
-import { BeatLoader } from "react-spinners";
+import { postSignUp } from "../../services/Services";
 
 export default function SignUp() {
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
-    const [responseVerification, setResponseVerification] = useState(undefined);
-    const [disabled, setDisabled] = useState(false);
+
     const navigate = useNavigate();
 
     function handleForm(e) {
@@ -15,37 +13,31 @@ export default function SignUp() {
         setForm({ ...form, [name]: value });
     }
 
-    function register(e) {
+    function handleSubmit(e) {
         e.preventDefault();
 
         const body = { ...form }
 
         postSignUp(body)
             .then(res => {
-                setResponseVerification(res.data)
                 navigate("/");
             })
             .catch(err => {
-                //alert(err.message)
-                alert("erro")
-                setDisabled(false)
+                console.log(err.message)
+                alert("Deu erro ao cadastrar! Por favor tente novamente!");
             })
-        if (responseVerification === undefined) {
-            return setDisabled(true)
-        }
     }
 
     return (
         <Container>
             <Title>MyWallet</Title>
-            <Form onSubmit={register}>
+            <Form onSubmit={handleSubmit}>
                 <input
                     name="name"
                     value={form.name}
                     onChange={handleForm}
                     type="text"
                     placeholder="Nome"
-                    disabled={disabled}
                     required
                 />
                 <input
@@ -54,7 +46,6 @@ export default function SignUp() {
                     onChange={handleForm}
                     type="text"
                     placeholder="E-mail"
-                    disabled={disabled}
                     required
                 />
                 <input
@@ -63,7 +54,6 @@ export default function SignUp() {
                     onChange={handleForm}
                     type="text"
                     placeholder="Senha"
-                    disabled={disabled}
                     required
                 />
                 <input
@@ -72,20 +62,10 @@ export default function SignUp() {
                     onChange={handleForm}
                     type="text"
                     placeholder="Confirme a senha"
-                    disabled={disabled}
                     required
                 />
-                    <button type="submit" disabled={disabled}>
-                    {disabled ?
-                        <BeatLoader
-                            size={12}
-                            aria-label="Loading Spinner"
-                            data-testid="loader"
-                            color="#ffffff"
-                            timeout={3000}
-                        />
-                        : 'Cadastrar'}
-                </button>
+                <button type="submit">Cadastrar</button>
+
                 <StyledLink to={"/"}>Já tem uma conta? Entre agora!</StyledLink>
             </Form>
 
@@ -97,7 +77,7 @@ const Container = styled.div`
     padding:15%;
     background-color: #8C11BE;
 `
-const Form = styled.div`
+const Form = styled.form`
     margin-top: 80px;
     input{
     margin-left: -5%;

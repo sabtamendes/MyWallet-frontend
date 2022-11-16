@@ -6,7 +6,7 @@ import SignUp from "./components/Sign-up/SignUp";
 import Registries from "./components/Registries/Registries";
 import NewEnter from "./components/Registries/NewEnter";
 import NewOut from "./components/Registries/NewOut";
-
+import EditEnter from "./components/Registries/EditEnter";
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
         <Route path="/registros" element={<Registries />} />
         <Route path="/novaentrada" element={<NewEnter />} />
         <Route path="/novasaida" element={<NewOut/>} />
+        <Route path="/editarentrada" element={<EditEnter/>} />
       </Routes>
     </Router>
     </UserContext.Provider>
