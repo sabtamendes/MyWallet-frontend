@@ -2,7 +2,9 @@ import styled from "styled-components";
 import Navbar from "../Navbar/Navbar";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoRemoveCircleOutline } from "react-icons/io5";
+import { Navigate } from "react-router-dom";
 export default function Registries() {
+
     return (
         <>
             <Navbar />
@@ -14,7 +16,7 @@ export default function Registries() {
                 </ListTransactions>
                 
                 <Rodape>
-                    <EnterBox>
+                    <EnterBox onClick={()=> Navigate("/novaentrada")}>
                         <span><IoAddCircleOutline color="#ffffff" size="30px" /></span>
 
                         <p>Nova entrada</p>

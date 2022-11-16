@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoRemoveCircleOutline } from "react-icons/io5";
 
-export default function Footer() {
+ function Footer() {
     return (
         <Container>
 
