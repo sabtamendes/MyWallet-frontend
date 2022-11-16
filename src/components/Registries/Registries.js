@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../Navbar/Navbar";
-
+import Footer from "../Footer/Footer";
 export default function Registries() {
     return (
         <>
@@ -12,6 +12,7 @@ export default function Registries() {
                     </br> entrada ou saída</span>
                 </ListTransactions>
             </Container>
+            <Footer />
         </>
     )
 }
@@ -34,7 +35,7 @@ margin-top: 120px;
 margin-right: 25px;
 margin-left: 25px;
 margin-bottom: 50px;
-border-radius: 10px;
+border-radius: 5px;
 background-color: #ffffff;
 color: #868686;
 font-family: Raleway;
