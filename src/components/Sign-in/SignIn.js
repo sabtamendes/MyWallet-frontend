@@ -1,16 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 import { postSignIn } from "../../services/Services";
 import styled from "styled-components";
 
-export default function SignIn({ loginResponse, setLoginResponse }) {
+export default function SignIn() {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("")
-    const [disabled, setDisabled] = useState(false);
+    const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
+    const { setUserData } = useContext(UserContext);
 
-    function userLogin(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         const body = {
             email,
@@ -19,58 +20,52 @@ export default function SignIn({ loginResponse, setLoginResponse }) {
 
         postSignIn(body)
             .then(res => {
-                setLoginResponse(res.data)
-                navigate("/cadastro");
+                setUserData(res.data);
+                navigate("/registros");
             })
             .catch(err => {
+                console.log(err)
                 alert("Verifique se os dados foram digitados corretamente");
-                setDisabled(false);
             })
-
-        if (loginResponse === undefined) {
-            return setDisabled(true);
-        }
     }
-        return (
-            <Container>
-                <Title>MyWallet</Title>
+    return (
+        <Container>
+            <Title>MyWallet</Title>
 
-                <Form onSubmit={userLogin}>
+            <Form onSubmit={handleSubmit}>
 
-                    <input
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="text"
-                        placeholder="E-mail"
-                        disabled={disabled}
-                        required
-                    />
-                    <input
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                        placeholder="Senha"
-                        disabled={disabled}
-                        required
-                    />
+                <input
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    placeholder="E-mail"
+                    required
+                />
+                <input
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    placeholder="Senha"
+                    required
+                />
 
-                    <button type="submit">Entrar</button>
-                </Form>
+                <button type="submit">Entrar</button>
+            </Form>
 
-                <StyledLink to={"/cadastro"}>Primeira vez? Cadastre-se!</StyledLink>
+            <StyledLink to={"/cadastro"}>Primeira vez? Cadastre-se!</StyledLink>
 
-            </Container>
-        )
-    }
+        </Container>
+    )
+}
 
-    const Container = styled.div`
+const Container = styled.div`
     height: 200vw;
     padding:15%;
     background-color: #8C11BE;
 `
-    const Title = styled.h1`
+const Title = styled.h1`
     display:flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +74,7 @@ export default function SignIn({ loginResponse, setLoginResponse }) {
     color: #FFFFFF;
     font-family: 'Saira Stencil One', cursive;
 `
-    const Form = styled.div`
+const Form = styled.form`
    margin-top: 8vh;
    input{
    margin-left: -5%;
@@ -112,7 +107,7 @@ button{
     border:none;
 }
 `
-    const StyledLink = styled(Link)`
+const StyledLink = styled(Link)`
     margin-top:5%;
     margin-left:20%;
     font-size:15px;
