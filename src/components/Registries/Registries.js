@@ -13,14 +13,15 @@ export default function Registries() {
     const [registries, setRegistries] = useState("");
     const [loading, setLoading] = useState(true)
     const { userData } = useContext(UserContext);
-    
-    useEffect(() => {
+
+
+    function listRegistries() {
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }
         }
-         getRegistries(config)
+        getRegistries(config)
             .then(res => {
                 setRegistries(res.data);
                 setLoading(false)
@@ -29,17 +30,16 @@ export default function Registries() {
             .catch(err => {
                 console.log(err.response)
             })
+    }
+    useEffect(listRegistries, [userData.token]);
 
-    }, [userData.token]);
-
-    if(loading){
+    if (loading) {
         return <Loading />
     }
     return (
         <>
             <Navbar />
             <Container>
-
 
                 {registries.transactions.length === 0
                     ?
@@ -53,11 +53,11 @@ export default function Registries() {
                     </ListTransactionsEmpty>
                     :
                     <ListTransactions>
-                        <Registrie registries={registries} />
+                        <Registrie registries={registries} listRegistries={listRegistries}/>
                     </ListTransactions>
 
                 }
-            
+
                 <Rodape>
                     <Link to="/novaentrada">
                         <EnterBox>
@@ -93,6 +93,8 @@ justify-content: center;
 align-items: center;
 height: 62vh;
 padding: 10%;
+// word-break: break-all;
+// max-width:40vw;
 margin-top: 120px;
 margin-right: 25px;
 margin-left: 25px;
@@ -110,7 +112,8 @@ span{
 `
 const ListTransactions = styled.div`
 height: 62vh;
-padding: 10%;
+padding-top:18px;
+padding-left: 32px;
 margin-top: 120px;
 margin-right: 25px;
 margin-left: 25px;
@@ -119,12 +122,6 @@ border-radius: 5px;
 background-color: #ffffff;
 color: #868686;
 font-family: Raleway;
-fon-size:20px;
-span{
-    display:flex;
-    justify-content: center;
-    align-items:center;
-}
 `
 const Rodape = styled.div`
 width:100%;
@@ -137,12 +134,13 @@ right:0;
 display: flex;
 justify-content: space-between;
 align-items: center;
-
 `
 const EnterBox = styled.button`
 background-color: #A328D6;
 border-radius: 5px;
 border: none;
+position: fixed;
+bottom: 0;
 margin-bottom: 15px;
 padding-top: 1vh;
 padding-bottom: 1vh;

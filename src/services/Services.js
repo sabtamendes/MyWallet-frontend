@@ -13,12 +13,20 @@ function postNewRegistries(body, config) {
     return axios.post("http://localhost:5000/credit", body, config);
 }
 function postOutRegistries(body, config){
-    return axios.post("http://localhost:5000/debit", body, config)
+    return axios.post("http://localhost:5000/debit", body, config);
+}
+function deleteTransactionsCredit(id, config){
+    return axios.post(`http://localhost:5000/credit/${id}`, config);
+}
+function deleteTransactionsDebit(id, config){
+    return axios.post(`http://localhost:5000/debit/${id}`, config);
 }
 export {
     postSignUp,
     postSignIn,
     getRegistries,
     postNewRegistries,
-    postOutRegistries
+    postOutRegistries,
+    deleteTransactionsCredit,
+    deleteTransactionsDebit
 }

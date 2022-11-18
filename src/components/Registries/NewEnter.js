@@ -40,7 +40,7 @@ export default function NewEnter() {
         }
     }
     return (
-        <Container>
+        <Main>
             <Title>Nova entrada</Title>
 
             <Form onSubmit={handleSubmit}>
@@ -62,10 +62,10 @@ export default function NewEnter() {
                 />
                 <button type="submit">Salvar entrada</button>
             </Form>
-        </Container>
+        </Main>
     )
 }
-const Container = styled.div`
+const Main = styled.div`
     height: 200vw;
     padding:15%;
     background-color: #8C11BE;
