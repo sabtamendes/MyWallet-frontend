@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { IoExitOutline } from "react-icons/io5";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 
 export default function Navbar() {
+    const { userData } = useContext(UserContext);
     return (
         <Header>
-            <span>Olá, Fulano</span>
-                <IoExitOutline color="#ffffff" size="37px" />
+            <span>Olá, {userData.name}</span>
+            <IoExitOutline color="#ffffff" size="37px" />
         </Header>
     )
 }

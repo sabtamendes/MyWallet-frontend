@@ -21,6 +21,7 @@ export default function SignIn() {
         postSignIn(body)
             .then(res => {
                 setUserData(res.data);
+                console.log(res.data);
                 navigate("/registros");
             })
             .catch(err => {
