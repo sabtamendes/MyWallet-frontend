@@ -29,8 +29,7 @@ export default function Registries() {
             })
 
     }, [userData.token]);
-    console.log(registries)
-
+   
     return (
         <>
             <Navbar />
@@ -50,8 +49,6 @@ export default function Registries() {
                     :
                     <ListTransactions>
                         <Registrie registries={registries} />
-
-                        <Balance>SALDO : <span>{0}</span></Balance>
                     </ListTransactions>
 
                 }
@@ -123,14 +120,6 @@ span{
     justify-content: center;
     align-items:center;
 }
-`
-const Balance = styled.div`
-margin-top: 42vh;
-margin-left: -25px;
-font-size: 18px;
-color: #000000;
-display: flex;
-justify-content: space-between;
 `
 const Rodape = styled.div`
 width:100%;

@@ -1,18 +1,34 @@
 import styled from "styled-components";
 
 export default function Registrie({ registries }) {
-    return (
 
+    function getBalance() {
+
+        const balance = registries.transactions.map((item) => {
+            if (item.type === "credit") {
+                return +item.value;
+            } else {
+                return -item.value;
+            }
+        }).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+
+        return balance.toFixed(2).replace(".", ",");
+    }
+    
+    const value = getBalance();
+
+    return (
         <>
             {registries.transactions
                 ? registries.transactions.map(({ date, description, type, value }, i) => (
                     <List key={i}>
                         <ListDate>{date}</ListDate>
                         <ListDescription>{description}</ListDescription>
-                        <ListValue type={type}>{value}</ListValue>
+                        <ListValue type={type}>{value.toFixed(2).replace(".", ",")}</ListValue>
                     </List>))
                 : ""
             }
+            <Balance><p>SALDO : </p><span>{value}</span></Balance>
         </>
     )
 }
@@ -27,6 +43,7 @@ const List = styled.div`
     height: 6vh;
     font-size: 16px;
     background-color:#ffffff;
+    color: #C6C6C6;
     border-radius: 5px;
     border:none;
 `
@@ -37,10 +54,27 @@ justify-content: flex-start;
 margin-left: -10%;
 `
 const ListDescription = styled.span`
+color: #000000;
+`
+const Balance = styled.div`
+margin-top: 42vh;
+margin-left: -25px;
+font-size: 18px;
+color: #000000;
+display: flex;
+justify-content: space-between;
+p{
+    font-weight: 800;
+}
+span{
+    font-weight: 500;
+    color:#03AC00;
+}
 `
 const ListValue = styled.span`
- color: ${props => props.type === "debit" ? "#C70000" : "#03AC00"};
- margin-right: -55px;
+color: ${props => props.type === "debit" ? "#C70000" : "#03AC00"};
+font-weight: 500;
+margin-right: -55px;
 display: flex;
 justify-content: space-between;
  `
