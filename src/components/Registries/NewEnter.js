@@ -5,10 +5,8 @@ import UserContext from "../../contexts/UserContext";
 import { postNewRegistries } from "../../services/Services";
 
 export default function NewEnter() {
-    // const [value, setValue] = useState("");
-    // const [description, setDescription] = useState("");
     const [form, setForm] = useState({ value: "", description: "" });
-    console.log(form.value, form.description)
+    
     const { userData } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -18,39 +16,35 @@ export default function NewEnter() {
         setForm({ ...form, [name]: value });
     }
 
-   async function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        const headers = {
+        const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }
         };
 
-        // const body = {
-        //     value: Number(form.value),
-        //     description: form.description,
-        //     type: "credit"
-        // };
-const body = {
-    ...form, value: Number(form.value),type: "credit"
-}
-      try{  await postNewRegistries(body, headers)
-            // .then((res) => {
-         alert("Sucesso")
-                navigate("/registros");
-            // })
-      }catch(err){ 
-        console.log(err)
-        alert("Verifique se a entrada está correta!")
+        const body = {
+            ...form, value: Number(form.value), type: "credit"
+        }
+        try {
+            await postNewRegistries(body, config)
+
+            alert("Sucesso");
+            navigate("/registros");
+
+        } catch (err) {
+            console.log(err)
+            alert("Verifique se a entrada está correta!")
+        }
     }
-   }
     return (
         <Container>
             <Title>Nova entrada</Title>
 
             <Form onSubmit={handleSubmit}>
-                <input             
+                <input
                     name="value"
                     value={form.value}
                     onChange={handleForm}
@@ -110,10 +104,3 @@ font-size: 26px;
 color: #ffffff;
 font-weight: bold;
 `
-// const StyledButton = styled.button`
-// background-color: #8C11BE;
-// font-family: 'Raleway', sans-serif;
-// font-size: 26px;
-// color: #ffffff;
-// font-weight: bold;
-// `

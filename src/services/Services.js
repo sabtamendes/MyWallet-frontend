@@ -10,11 +10,12 @@ function postSignIn(body) {
 function getRegistries(config) {
     return axios.get("http://localhost:5000/transactions", config);
 }
-function postNewRegistries(body, headers) {
-    return axios.post("http://localhost:5000/transactions", body, headers);
+function postNewRegistries(body, config) {
+    return axios.post("http://localhost:5000/credit", body, config);
 }
 function postOutRegistries(body, config){
-    return axios.post("http://localhost:5000/transactions", body, config)
+    console.log("postBody", config)
+    return axios.post("http://localhost:5000/debit", body, config)
 }
 export {
     postSignUp,

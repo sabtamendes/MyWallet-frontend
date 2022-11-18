@@ -11,7 +11,9 @@ export default function Registrie({ registries }) {
                 return -item.value;
             }
         }).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-
+        if (balance === undefined) {
+            return
+        }
         return balance.toFixed(2).replace(".", ",");
     }
 
@@ -60,19 +62,23 @@ margin-left: -20%;
 color: #000000;
 `
 const Balance = styled.div`
+position:fixed;
+top:30vh;
+display: flex;
+justify-content: space-between;
 margin-top: 42vh;
 margin-left: -25px;
 font-size: 18px;
 color: #000000;
-display: flex;
-justify-content: space-between;
+
 p{
     font-weight: 800;
+    margin-right: 24vh;
 }
 span{
     font-weight: 500;
     color:#03AC00;
-    margin-right: -25px;
+    margin-right: -50px;
 }
 `
 const ListValue = styled.span`

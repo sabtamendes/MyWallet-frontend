@@ -5,53 +5,57 @@ import UserContext from "../../contexts/UserContext";
 import { postOutRegistries } from "../../services/Services";
 
 export default function NewOut() {
-    const [value, setValue] = useState("");
-    const [description, setDescription] = useState("");
-
+    const [form, setForm] = useState({ value: "", description: "" });
     const { userData } = useContext(UserContext);
     const navigate = useNavigate();
 
-    function handleSubmit(e){
-    e.preventDefault();
-const config = {
-    headers: {
-        Authorization: `Bearer ${userData.token}`
+    function handleForm(e) {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
     }
-}
-const body = {value: Number(value), description: description, type: "debit"}
-    postOutRegistries(config, body)
-    .then((res)=>{
-        console.log(res) 
-        navigate("/registros")
-    })
-    .catch(err => {console.log(err)})
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userData.token}`
+            }
+        }
+        
+        const body = { value: Number(form.value), description: form.description, type: "debit" };
+        console.log(body)
+      try{  await postOutRegistries( body, config)
+            
+                navigate("/registros")
+            
+         }catch(err) { console.log(err) }
 
     }
-    console.log(value, description)
+    console.log(form.value, form.description)
     return (
         <Container>
             <Title>Nova saída</Title>
-            <Form onChange={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <input
-                    name="value"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                    type="number"
-                    placeholder="Valor"
-                    required
+                   name="value"
+                   value={form.value}
+                   onChange={handleForm}
+                   type="number"
+                   placeholder="Valor"
+                   required
                 />
                 <input
                     name="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={form.description}
+                    onChange={handleForm}
                     type="text"
                     placeholder="Descrição"
                     required
                 />
 
-                <StyledButton type="submit">
+                <button type="submit">
                     Salvar saída
-                </StyledButton>
+                </button>
             </Form>
         </Container>
     )
@@ -61,7 +65,7 @@ const Container = styled.div`
     padding:15%;
     background-color: #8C11BE;
 `
-const Form = styled.div`
+const Form = styled.form`
     margin-top: 80px;
     input{
     margin-left: -5%;
@@ -81,22 +85,16 @@ const Form = styled.div`
     margin-bottom:15%;
     width:38vh;
     padding: 15px;
-    font-weight:600;
+    font-weight: bold;
     font-size: 15px;
     color: #FFFFFF;
     background-color:#A328D6;
     border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
     border:none;
     }
 `
 const Title = styled.h1`
-font-family: 'Raleway', sans-serif;
-font-size: 26px;
-color: #ffffff;
-font-weight: bold;
-`
-const StyledButton = styled.button`
-background-color: #8C11BE;
 font-family: 'Raleway', sans-serif;
 font-size: 26px;
 color: #ffffff;
