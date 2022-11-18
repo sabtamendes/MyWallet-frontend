@@ -14,7 +14,7 @@ export default function Registrie({ registries }) {
 
         return balance.toFixed(2).replace(".", ",");
     }
-    
+
     const value = getBalance();
 
     return (
@@ -54,6 +54,9 @@ justify-content: flex-start;
 margin-left: -10%;
 `
 const ListDescription = styled.span`
+display: flex;
+justify-content: flex-start;
+margin-left: -20%;
 color: #000000;
 `
 const Balance = styled.div`
@@ -69,6 +72,7 @@ p{
 span{
     font-weight: 500;
     color:#03AC00;
+    margin-right: -25px;
 }
 `
 const ListValue = styled.span`

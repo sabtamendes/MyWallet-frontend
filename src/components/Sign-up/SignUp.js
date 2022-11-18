@@ -66,7 +66,9 @@ export default function SignUp() {
                 />
                 <button type="submit">Cadastrar</button>
 
-                <StyledLink to={"/"}>Já tem uma conta? Entre agora!</StyledLink>
+                <StyledLink to={"/"}>
+                    Já tem uma conta? Entre agora!
+                </StyledLink>
             </Form>
 
         </Container>
