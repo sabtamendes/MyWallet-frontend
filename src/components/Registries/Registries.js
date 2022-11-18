@@ -30,11 +30,6 @@ export default function Registries() {
 
     }, [userData.token]);
     console.log(registries)
-    // const balanceList = registries.transactions.map((item) =>
-    //     item.type === "credit" ? item.type + item.value : item.type - item.value).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-
-
-
 
     return (
         <>
