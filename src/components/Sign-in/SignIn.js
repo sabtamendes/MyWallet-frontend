@@ -61,7 +61,7 @@ export default function SignIn() {
 }
 
 const Container = styled.div`
-    height: 200vw;
+    height: 210vw;
     padding:15%;
     background-color: #8C11BE;
 `

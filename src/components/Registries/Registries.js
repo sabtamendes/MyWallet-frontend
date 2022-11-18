@@ -7,21 +7,23 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import { getRegistries } from "../../services/Services";
 import Registrie from "./Registrie";
-
+import Loading from "../Loading/Loading";
 export default function Registries() {
 
     const [registries, setRegistries] = useState("");
+    const [loading, setLoading] = useState(true)
     const { userData } = useContext(UserContext);
-
+    
     useEffect(() => {
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }
         }
-        getRegistries(config)
+         getRegistries(config)
             .then(res => {
                 setRegistries(res.data);
+                setLoading(false)
                 console.log(res.data)
             })
             .catch(err => {
@@ -29,14 +31,17 @@ export default function Registries() {
             })
 
     }, [userData.token]);
-   
+
+    if(loading){
+        return <Loading />
+    }
     return (
         <>
             <Navbar />
             <Container>
 
 
-                {registries.length === 0
+                {registries.transactions.length === 0
                     ?
                     <ListTransactionsEmpty>
                         <span>

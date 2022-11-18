@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Loading from "../Loading/Loading";
 export default function Registrie({ registries }) {
 
     function getBalance() {
@@ -11,14 +11,19 @@ export default function Registrie({ registries }) {
                 return -item.value;
             }
         }).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-        if (balance === undefined) {
-            return
+        if(balance === undefined){
+            return <Loading/>
+        }else{
+            return balance?.toFixed(2).replace(".", ",");
         }
-        return balance.toFixed(2).replace(".", ",");
+        
     }
 
     const value = getBalance();
 
+     if(registries.transactions.length === 0 ){
+         return <Loading/>
+        }
     return (
         <>
             {registries.transactions
@@ -26,7 +31,7 @@ export default function Registrie({ registries }) {
                     <List key={i}>
                         <ListDate>{date}</ListDate>
                         <ListDescription>{description}</ListDescription>
-                        <ListValue type={type}>{value.toFixed(2).replace(".", ",")}</ListValue>
+                        <ListValue type={type}>{value?.toFixed(2).replace(".", ",")}</ListValue>
                     </List>))
                 : ""
             }

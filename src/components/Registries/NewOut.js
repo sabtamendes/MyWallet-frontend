@@ -6,7 +6,9 @@ import { postOutRegistries } from "../../services/Services";
 
 export default function NewOut() {
     const [form, setForm] = useState({ value: "", description: "" });
+
     const { userData } = useContext(UserContext);
+
     const navigate = useNavigate();
 
     function handleForm(e) {
@@ -16,48 +18,51 @@ export default function NewOut() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }
-        }
-        
-        const body = { value: Number(form.value), description: form.description, type: "debit" };
-        console.log(body)
-      try{  await postOutRegistries( body, config)
-            
-                navigate("/registros")
-            
-         }catch(err) { console.log(err) }
+        };
 
+        const body = {
+            ...form, value: Number(form.value), type: "debit"
+        }
+        try {
+            await postOutRegistries(body, config)
+
+            alert("Sucesso");
+            navigate("/registros");
+
+        } catch (err) {
+            console.log(err)
+            alert("Verifique se a entrada está correta!")
+        }
     }
-    console.log(form.value, form.description)
     return (
         <Container>
             <Title>Nova saída</Title>
-            <Form onSubmit={handleSubmit}>
-                <input
-                   name="value"
-                   value={form.value}
-                   onChange={handleForm}
-                   type="number"
-                   placeholder="Valor"
-                   required
-                />
-                <input
-                    name="description"
-                    value={form.description}
-                    onChange={handleForm}
-                    type="text"
-                    placeholder="Descrição"
-                    required
-                />
 
-                <button type="submit">
-                    Salvar saída
-                </button>
-            </Form>
-        </Container>
+                <Form onSubmit={handleSubmit}>
+                    <input
+                        name="value"
+                        value={form.value}
+                        onChange={handleForm}
+                        type="number"
+                        placeholder="Valor"
+                        required
+                    />
+                    <input
+                        name="description"
+                        value={form.description}
+                        onChange={handleForm}
+                        type="text"
+                        placeholder="Descrição"
+                        required
+                    />
+                    <button type="submit">Salvar saída</button>
+                </Form>
+            </Container>
     )
 }
 const Container = styled.div`
