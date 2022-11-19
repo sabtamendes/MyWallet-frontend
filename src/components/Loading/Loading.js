@@ -6,13 +6,13 @@ export default function Loading() {
         <Container>
             <MagnifyingGlass
                 visible={true}
-                height="80"
-                width="80"
+                height="90"
+                width="90"
                 ariaLabel="MagnifyingGlass-loading"
                 wrapperStyle={{}}
                 wrapperClass="MagnifyingGlass-wrapper"
-                glassColor='#c0efff'
-                color='#e15b64'
+                glassColor='#f1faee'
+                color='#03045e'
             />
         </Container>
     )

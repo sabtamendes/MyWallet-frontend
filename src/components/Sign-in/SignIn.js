@@ -89,23 +89,18 @@ const Form = styled.form`
     color:#000000;
    }
 }
-
 button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-left: -5%;
     margin-bottom:15%;
-    width: 76vw;
-    height: 6vh;
+    width:38vh;
+    padding: 15px;
     font-weight:600;
     font-size: 15px;
-    font-family: 'Raleway', sans-serif;
     color: #FFFFFF;
     background-color:#A328D6;
     border-radius: 5px;
     border:none;
-}
+    }
 `
 const StyledLink = styled(Link)`
     margin-top:5%;
