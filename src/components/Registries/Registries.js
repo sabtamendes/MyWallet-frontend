@@ -11,7 +11,7 @@ import Loading from "../Loading/Loading";
 export default function Registries() {
 
     const [registries, setRegistries] = useState("");
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const { userData } = useContext(UserContext);
 
 
@@ -61,15 +61,15 @@ export default function Registries() {
                 <Rodape>
                     <Link to="/novaentrada">
                         <EnterBox>
-                            <span><IoAddCircleOutline color="#ffffff" size="30px" /></span>
+                           <IoAddCircleOutline color="#ffffff" size="30px" />
 
                             <p>Nova entrada</p>
                         </EnterBox>
                     </Link>
                     <Link to="/novasaida">
                         <OutBox>
-                            <IoRemoveCircleOutline color="#ffffff" size="30px" />
-                            <p>Nova<br></br>saída</p>
+                           <IoRemoveCircleOutline color="#ffffff" size="30px" />
+                            <p>Nova saída</p>
                         </OutBox>
                     </Link>
                 </Rodape>
@@ -125,35 +125,39 @@ font-family: Raleway;
 `
 const Rodape = styled.div`
 width:100%;
-padding-left: 28px;
-padding-right:28px;
+background-color: #8C11BE;
 position:fixed;
-z-index: 2;
+z-index: 1;
 bottom: 0;
 right:0;
 display: flex;
 justify-content: space-between;
-align-items: center;
 `
 const EnterBox = styled.button`
 background-color: #A328D6;
 border-radius: 5px;
 border: none;
 position: fixed;
-bottom: 0;
+bottom:0;
+margin-left: 3vh;
 margin-bottom: 15px;
-padding-top: 1vh;
-padding-bottom: 1vh;
-padding-right: 15vw;
+width: 20vh;
+height: 18vh;
+display:flex;
+flex-direction: column;
+justify-content:space-between;
+padding: 10px;
 p{
     font-size: 15px;
     font-weight: bold;
     font-family: Raleway;
     color: #ffffff;
-    margin-top: 70px;
-}
-span{
-    margin-left: -65px;
+    line-break:strict;
+    word-break: break-all;
+    width: 55px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
 }
 `
 const OutBox = styled.button`
@@ -161,15 +165,26 @@ background-color: #A328D6;
 border-radius: 5px;
 border: none;
 margin-bottom: 15px;
-padding-top: 1vh;
-padding-bottom: 1vh;
-padding-right: 30vw;
-padding-left: 5px;
+margin-right: 3.5vh;
+width: 20vh;
+height: 18vh;
+position:fixed;
+bottom: 0;
+right: 0;
+display:flex;
+flex-direction: column;
+justify-content:space-between;
+padding: 10px;
 p{
     font-size: 15px;
     font-weight: bold;
     font-family: Raleway;
     color: #ffffff;
-    margin-top: 50px;
+    line-break:strict;
+    word-break: break-all;
+    width: 55px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 `
