@@ -6,6 +6,9 @@ function postSignUp(body) {
 function postSignIn(body) {
     return axios.post("http://localhost:5000/sign-in", body);
 }
+function postSignOut(config){
+    return axios.post("http://localhost:5000/sign-out", config);
+}
 function getRegistries(config) {
     return axios.get("http://localhost:5000/transactions", config);
 }
@@ -24,6 +27,7 @@ function deleteTransactionsDebit(id, config){
 export {
     postSignUp,
     postSignIn,
+    postSignOut,
     getRegistries,
     postNewRegistries,
     postOutRegistries,

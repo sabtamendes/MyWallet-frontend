@@ -2,13 +2,32 @@ import styled from "styled-components";
 import { IoExitOutline } from "react-icons/io5";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import { postSignOut } from "../../services/Services";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
     const { userData } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    
+   function signOut(){
+        const config = {
+            headers : {
+                Authorization: `Bearer ${userData.token}`
+            }
+        }
+        postSignOut(config)
+        .then(res => {
+            console.log(res.data)
+            navigate("/")
+        })
+        .catch(err => {console.log(err.response)})
+    }
+
     return (
         <Header>
             <span>Olá, {userData.name}</span>
-            <IoExitOutline color="#ffffff" size="37px" />
+            <IoExitOutline color="#ffffff" size="37px" onClick={signOut}/>
         </Header>
     )
 }
