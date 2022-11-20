@@ -6,7 +6,7 @@ import { postNewRegistries } from "../../services/Services";
 
 export default function NewEnter() {
     const [form, setForm] = useState({ value: "", description: "" });
-    
+
     const { userData } = useContext(UserContext);
 
     const navigate = useNavigate();

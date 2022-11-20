@@ -1,65 +1,17 @@
 import styled from "styled-components";
 import Loading from "../Loading/Loading";
 import { IoCloseOutline } from "react-icons/io5";
-// import UserContext from "../../contexts/UserContext";
-// import { useContext } from "react";
-// import { confirmAlert } from "react-confirm-alert";
-// import { deleteTransactionsCredit } from "../../services/Services";
-export default function Registrie({ registries, listRegistries }) {
 
-    // const { userData } = useContext(UserContext);
+export default function Registrie({ registries }) {
 
-    function getBalance() {
-
-        const balance = registries.transactions.map((item) => {
-            // deleteTransactions(item.id)
-            if (item.type === "credit") {
-                return +item.value;
-            } else {
-                return -item.value;
-            }
-        }).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-        if (balance === undefined) {
-            return <Loading />
-        } else {
-            return balance?.toFixed(2).replace(".", ",");
-        }
-    }
-
-    const value = getBalance();
-
-    // function deleteTransactions(id) {
-    //     const config = {
-    //         header: {
-    //             Authorization: `Bearer ${userData.token}`
-    //         }
-    //     }
-    //     confirmAlert({
-    //         title: "Confirmação",
-    //         message: "Quer realmente excluir o valor escolhido?",
-    //         buttons: [
-    //             {
-    //                 label: "Sim",
-    //                 onClick: () => deleteTransactionsCredit(id, config)
-    //                     .then(res => {
-    //                         listRegistries()
-    //                     })
-    //                     .catch(err => {
-    //                         alert("Algo deu errado! Tente novamente!")
-    //                     })
-    //             }, {
-    //                 label: "Não"
-    //             }
-    //         ]
-    //     })
-    // }
-    if (registries.transactions.length === 0) {
+    if (registries === undefined) {
         return <Loading />
     }
+
     return (
         <>
-            {registries.transactions
-                ? registries.transactions.map(({ date, description, type, value }, i) => (
+            {registries
+                ? registries.map(({ date, description, type, value }, i) => (
                     <List key={i}>
                         <ListDate>{date}</ListDate>
                         <ListDescription>{description}</ListDescription>
@@ -70,7 +22,13 @@ export default function Registrie({ registries, listRegistries }) {
                     </List>))
                 : ""
             }
-            <Balance><p>SALDO : </p><span>{value}</span></Balance>
+            <Balance><p>SALDO : </p><span>{registries.map((item) => {
+                if (item.type === "credit") {
+                    return +item.value;
+                } else {
+                    return -item.value;
+                }
+            }).reduce((previousValue, currentValue) => previousValue + currentValue, 0).toFixed(2).replace(".", ",")}</span></Balance>
         </>
     )
 }

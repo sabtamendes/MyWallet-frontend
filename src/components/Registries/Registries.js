@@ -14,26 +14,25 @@ export default function Registries() {
     const [loading, setLoading] = useState(true);
     const { userData } = useContext(UserContext);
 
-
-    function listRegistries() {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${userData.token}`
+    useEffect(() => {
+        async function listRegistries() {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${userData.token}`
+                }
+            }
+            try {
+                const { data } = await getRegistries(config)
+                setRegistries(data);
+                setLoading(false)
+            } catch (err) {
+                console.log(err.response)
             }
         }
-        getRegistries(config)
-            .then(res => {
-                setRegistries(res.data);
-                setLoading(false)
-                console.log(res.data)
-            })
-            .catch(err => {
-                console.log(err.response)
-            })
-    }
-    useEffect(listRegistries, [userData.token]);
+        listRegistries()
+    }, [userData.token])
 
-    if (loading) {
+    if (loading || registries === null) {
         return <Loading />
     }
     return (
@@ -41,7 +40,7 @@ export default function Registries() {
             <Navbar />
             <Container>
 
-                {registries.transactions.length === 0
+                {registries.length === 0
                     ?
                     <ListTransactionsEmpty>
                         <span>
@@ -53,22 +52,21 @@ export default function Registries() {
                     </ListTransactionsEmpty>
                     :
                     <ListTransactions>
-                        <Registrie registries={registries} listRegistries={listRegistries}/>
+                        <Registrie registries={registries} />
                     </ListTransactions>
-
                 }
 
                 <Rodape>
                     <Link to="/novaentrada">
                         <EnterBox>
-                           <IoAddCircleOutline color="#ffffff" size="30px" />
+                            <IoAddCircleOutline color="#ffffff" size="30px" />
 
                             <p>Nova entrada</p>
                         </EnterBox>
                     </Link>
                     <Link to="/novasaida">
                         <OutBox>
-                           <IoRemoveCircleOutline color="#ffffff" size="30px" />
+                            <IoRemoveCircleOutline color="#ffffff" size="30px" />
                             <p>Nova saída</p>
                         </OutBox>
                     </Link>

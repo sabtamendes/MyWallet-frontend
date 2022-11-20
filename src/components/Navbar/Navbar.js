@@ -1,34 +1,39 @@
 import styled from "styled-components";
 import { IoExitOutline } from "react-icons/io5";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
-import { postSignOut } from "../../services/Services";
+//import { postSignOut } from "../../services/Services";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
     const { userData } = useContext(UserContext);
     const navigate = useNavigate();
 
+    // async function signOut() {
+    //     const config = {
+    //         headers: {
+    //             Authorization: `Bearer ${userData.token}`
+    //         }
+    //     }
+    //     try {
 
-    function signOut() {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${userData.token}`
-            }
+    //         await postSignOut(config)
+
+    //         navigate("/")
+
+    //     } catch (err) { console.log(err.response) }
+    // }
+
+    useEffect(() => {
+        if (!localStorage.getItem("token")) {
+            navigate("/")
         }
-        console.log(config)
-        postSignOut(config)
-            .then(res => {
-                console.log(res.data)
-                navigate("/")
-            })
-            .catch(err => { console.log(err.response) })
-    }
+    })
 
     return (
         <Header>
             <span>Olá, {userData.name}</span>
-            <IoExitOutline color="#ffffff" size="37px" onClick={() => signOut()} />
+            <IoExitOutline color="#ffffff" size="37px" onClick={() => { localStorage.removeItem("token") }} />
         </Header>
     )
 }

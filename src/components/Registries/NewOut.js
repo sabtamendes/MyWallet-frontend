@@ -43,26 +43,26 @@ export default function NewOut() {
         <Container>
             <Title>Nova saída</Title>
 
-                <Form onSubmit={handleSubmit}>
-                    <input
-                        name="value"
-                        value={form.value}
-                        onChange={handleForm}
-                        type="number"
-                        placeholder="Valor"
-                        required
-                    />
-                    <input
-                        name="description"
-                        value={form.description}
-                        onChange={handleForm}
-                        type="text"
-                        placeholder="Descrição"
-                        required
-                    />
-                    <button type="submit">Salvar saída</button>
-                </Form>
-            </Container>
+            <Form onSubmit={handleSubmit}>
+                <input
+                    name="value"
+                    value={form.value}
+                    onChange={handleForm}
+                    type="number"
+                    placeholder="Valor"
+                    required
+                />
+                <input
+                    name="description"
+                    value={form.description}
+                    onChange={handleForm}
+                    type="text"
+                    placeholder="Descrição"
+                    required
+                />
+                <button type="submit">Salvar saída</button>
+            </Form>
+        </Container>
     )
 }
 const Container = styled.div`

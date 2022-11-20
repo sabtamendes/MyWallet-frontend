@@ -2,18 +2,20 @@ import styled from "styled-components";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoRemoveCircleOutline } from "react-icons/io5";
 
- function Footer() {
+function Footer() {
     return (
         <Container>
 
             <EnterBox>
-            <span><IoAddCircleOutline color="#ffffff" size="30px" /></span>
-                
+                <span>
+                    <IoAddCircleOutline color="#ffffff" size="30px" />
+                </span>
+
                 <p>Nova entrada</p>
             </EnterBox>
 
             <OutBox>
-                <IoRemoveCircleOutline  color="#ffffff" size="30px" />
+                <IoRemoveCircleOutline color="#ffffff" size="30px" />
                 <p>Nova<br></br>saída</p>
             </OutBox>
 

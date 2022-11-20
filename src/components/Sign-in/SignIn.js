@@ -20,7 +20,9 @@ export default function SignIn() {
 
         postSignIn(body)
             .then(res => {
+                localStorage.setItem("token", res.data.token);
                 setUserData(res.data);
+                console.log(res.data.token)
                 navigate("/registros");
             })
             .catch(err => {
