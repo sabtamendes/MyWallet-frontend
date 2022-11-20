@@ -9,25 +9,26 @@ export default function Navbar() {
     const { userData } = useContext(UserContext);
     const navigate = useNavigate();
 
-    
-   function signOut(){
+
+    function signOut() {
         const config = {
-            headers : {
+            headers: {
                 Authorization: `Bearer ${userData.token}`
             }
         }
+        console.log(config)
         postSignOut(config)
-        .then(res => {
-            console.log(res.data)
-            navigate("/")
-        })
-        .catch(err => {console.log(err.response)})
+            .then(res => {
+                console.log(res.data)
+                navigate("/")
+            })
+            .catch(err => { console.log(err.response) })
     }
 
     return (
         <Header>
             <span>Olá, {userData.name}</span>
-            <IoExitOutline color="#ffffff" size="37px" onClick={signOut}/>
+            <IoExitOutline color="#ffffff" size="37px" onClick={() => signOut()} />
         </Header>
     )
 }
