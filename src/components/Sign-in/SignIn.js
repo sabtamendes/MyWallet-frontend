@@ -31,12 +31,12 @@ export default function SignIn() {
                 }
             })
             .catch(err => {
-                console.log(err)
-              alert("Verifique se os dados foram digitados corretamente");
+                console.log(err.response.data);
+                alert("Verifique se o seu email ou senha estão corretos!");
             })
     }
     const handleShow = () => {
-        setShow(!show)
+        setShow(!show);
     }
    
     return (
@@ -116,7 +116,7 @@ button{
     border:none;
 }
 span{
-    position:absolute;
+    position:fixed;
     top:43%;
     right: 16%;
     z-index:3;

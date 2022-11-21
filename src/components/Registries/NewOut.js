@@ -31,12 +31,12 @@ export default function NewOut() {
         try {
             await postOutRegistries(body, config)
 
-            alert("Sucesso");
+            alert("Sucesso ao cadastrar nova saída");
             navigate("/registros");
 
         } catch (err) {
-            console.log(err)
-            alert("Verifique se a entrada está correta!")
+            console.log(err.response.data.message);
+            alert(err.response.data.message);
         }
     }
     return (

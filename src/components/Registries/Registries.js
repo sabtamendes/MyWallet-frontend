@@ -8,6 +8,8 @@ import UserContext from "../../contexts/UserContext";
 import { getRegistries } from "../../services/Services";
 import Registrie from "./Registrie";
 import Loading from "../Loading/Loading";
+
+
 export default function Registries() {
 
     const [registries, setRegistries] = useState("");
@@ -24,12 +26,12 @@ export default function Registries() {
             try {
                 const { data } = await getRegistries(config)
                 setRegistries(data);
-                setLoading(false)
+                setLoading(false);
             } catch (err) {
-                console.log(err.response)
+                console.log(err.response.data.message);
             }
         }
-        listRegistries()
+        listRegistries();
     }, [userData.token])
 
     if (loading || registries === null) {

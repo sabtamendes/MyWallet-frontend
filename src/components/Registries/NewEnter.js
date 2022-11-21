@@ -31,12 +31,12 @@ export default function NewEnter() {
         try {
             await postNewRegistries(body, config)
 
-            alert("Sucesso");
+            alert("Sucesso ao cadastrar nova entrada");
             navigate("/registros");
 
         } catch (err) {
-            console.log(err)
-            alert("Verifique se a entrada está correta!")
+            console.log(err.response.data.message)
+            alert(err.response.data.message);
         }
     }
     return (

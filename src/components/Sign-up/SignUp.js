@@ -18,24 +18,25 @@ export default function SignUp() {
     function handleSubmit(e) {
         e.preventDefault();
         if (form.password !== form.confirmPassword) {
-           return alert("Senhas informadas estão diferentes!");
+            return alert("Senhas informadas estão diferentes!");
         }
         const body = { ...form }
 
         postSignUp(body)
             .then(res => {
+                console.log(res.data.message);
                 navigate("/");
             })
             .catch(err => {
-                console.log(err.message)
-                alert("Deu erro ao cadastrar! Por favor tente novamente!");
+                console.log(err.response.data);
+                alert("Verifique se os dados foram digitados corretamente!");
             })
     }
     const handleShow = () => {
-            return setShowOne(!showOne)
+        return setShowOne(!showOne);
     }
-    const handleShowTwo = ()=>{
-        return setShowTwo(!showTwo)
+    const handleShowTwo = () => {
+        return setShowTwo(!showTwo);
     }
     return (
         <Container>
@@ -65,7 +66,7 @@ export default function SignUp() {
                     placeholder="Senha"
                     required
                 />
-                 <IconOne onClick={handleShow}>{showOne ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconOne>
+                <IconOne onClick={handleShow}>{showOne ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconOne>
                 <input
                     name="confirmPassword"
                     value={form.confirmPassword}
@@ -74,7 +75,7 @@ export default function SignUp() {
                     placeholder="Confirme a senha"
                     required
                 />
-                 <IconTwo onClick={handleShowTwo}>{showTwo ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconTwo>
+                <IconTwo onClick={handleShowTwo}>{showTwo ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconTwo>
                 <button type="submit">Cadastrar</button>
 
                 <StyledLink to={"/"}>
