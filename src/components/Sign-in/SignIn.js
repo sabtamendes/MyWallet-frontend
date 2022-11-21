@@ -3,13 +3,15 @@ import React, { useState, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { postSignIn } from "../../services/Services";
 import styled from "styled-components";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [show, setShow] = useState(false);
+    const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate();
-    const { setUserData } = useContext(UserContext);
+    const { userData, setUserData } = useContext(UserContext);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -22,14 +24,21 @@ export default function SignIn() {
             .then(res => {
                 localStorage.setItem("token", res.data.token);
                 setUserData(res.data);
-                console.log(res.data.token)
                 navigate("/registros");
+                setDisabled(false);
+                if(userData === undefined){
+                    return setDisabled(true);
+                }
             })
             .catch(err => {
                 console.log(err)
-                alert("Verifique se os dados foram digitados corretamente");
+              alert("Verifique se os dados foram digitados corretamente");
             })
     }
+    const handleShow = () => {
+        setShow(!show)
+    }
+   
     return (
         <Container>
             <Title>MyWallet</Title>
@@ -42,20 +51,23 @@ export default function SignIn() {
                     onChange={(e) => setEmail(e.target.value)}
                     type="text"
                     placeholder="E-mail"
+                    disabled={disabled}
                     required
                 />
                 <input
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    type="password"
+                    type={show ? "text" : "password"}
                     placeholder="Senha"
+                    disabled={disabled}
                     required
                 />
+                <span onClick={handleShow}>{show ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</span>
 
-                <button type="submit">Entrar</button>
+                <button type="submit" disabled={disabled}>Entrar</button>
             </Form>
-
+            
             <StyledLink to={"/cadastro"}>Primeira vez? Cadastre-se!</StyledLink>
 
         </Container>
@@ -102,11 +114,18 @@ button{
     background-color:#A328D6;
     border-radius: 5px;
     border:none;
-    }
+}
+span{
+    position:absolute;
+    top:43%;
+    right: 16%;
+    z-index:3;
+    padding-top:30px;
+}
 `
 const StyledLink = styled(Link)`
     margin-top:5%;
-    margin-left:20%;
+    margin-left:18.5%;
     font-size:15px;
     font-weight: bold;
     color: #ffffff;

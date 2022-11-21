@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postSignUp } from "../../services/Services";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 export default function SignUp() {
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
-
+    const [showOne, setShowOne] = useState(false);
+    const [showTwo, setShowTwo] = useState(false);
     const navigate = useNavigate();
 
     function handleForm(e) {
@@ -15,7 +17,9 @@ export default function SignUp() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+        if (form.password !== form.confirmPassword) {
+           return alert("Senhas informadas estão diferentes!");
+        }
         const body = { ...form }
 
         postSignUp(body)
@@ -27,7 +31,12 @@ export default function SignUp() {
                 alert("Deu erro ao cadastrar! Por favor tente novamente!");
             })
     }
-
+    const handleShow = () => {
+            return setShowOne(!showOne)
+    }
+    const handleShowTwo = ()=>{
+        return setShowTwo(!showTwo)
+    }
     return (
         <Container>
             <Title>MyWallet</Title>
@@ -52,18 +61,20 @@ export default function SignUp() {
                     name="password"
                     value={form.password}
                     onChange={handleForm}
-                    type="text"
+                    type={showOne ? "text" : "password"}
                     placeholder="Senha"
                     required
                 />
+                 <IconOne onClick={handleShow}>{showOne ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconOne>
                 <input
                     name="confirmPassword"
                     value={form.confirmPassword}
                     onChange={handleForm}
-                    type="text"
+                    type={showTwo ? "text" : "password"}
                     placeholder="Confirme a senha"
                     required
                 />
+                 <IconTwo onClick={handleShowTwo}>{showTwo ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconTwo>
                 <button type="submit">Cadastrar</button>
 
                 <StyledLink to={"/"}>
@@ -124,4 +135,18 @@ const StyledLink = styled(Link)`
     color: #FFFFFF;
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
+`
+const IconOne = styled.span`
+    position:absolute;
+    top:43%;
+    right: 16%;
+    z-index:3;
+    padding-top:30px;
+`
+const IconTwo = styled.span`
+    position:absolute;
+    top:51.2%;
+    right: 16%;
+    z-index:3;
+    padding-top:30px;
 `

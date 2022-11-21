@@ -22,7 +22,7 @@ export default function Registrie({ registries }) {
                     </List>))
                 : ""
             }
-            <Balance><p>SALDO : </p><span>{registries.map((item) => {
+            <Balance registries={registries}><p>SALDO : </p><span>{registries.map((item) => {
                 if (item.type === "credit") {
                     return +item.value;
                 } else {

@@ -26,7 +26,7 @@ export default function Navbar() {
 
     useEffect(() => {
         if (!localStorage.getItem("token")) {
-            navigate("/")
+            navigate("/");
         }
     })
 
