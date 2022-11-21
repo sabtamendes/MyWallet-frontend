@@ -20,7 +20,7 @@ export default function SignUp() {
         if (form.password !== form.confirmPassword) {
             return alert("Senhas informadas estão diferentes!");
         }
-        if(form.password.length <=5){
+        if (form.password.length <= 5) {
             return alert("Senha deve ter pelo menos 6 dígitos!");
         }
         const body = { ...form }
@@ -32,7 +32,12 @@ export default function SignUp() {
             })
             .catch(err => {
                 console.log(err.response.data);
-                alert("Email já está em uso!");
+                if (err.response.data.message === "Email já está em uso!") {
+                    return alert("Email já está em uso!");
+                }
+                if (err.response.data.includes('"email" must be a valid email')) {
+                    return alert("Email deve ser um email válido!");
+                }
             })
     }
     const handleShow = () => {
