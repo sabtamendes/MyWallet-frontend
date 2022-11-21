@@ -20,6 +20,9 @@ export default function SignUp() {
         if (form.password !== form.confirmPassword) {
             return alert("Senhas informadas estão diferentes!");
         }
+        if(form.password.length <=5){
+            return alert("Senha deve ter pelo menos 6 dígitos!");
+        }
         const body = { ...form }
 
         postSignUp(body)
