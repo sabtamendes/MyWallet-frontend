@@ -32,7 +32,7 @@ export default function SignUp() {
             })
             .catch(err => {
                 console.log(err.response.data);
-                alert("Verifique se o seu email foi digitado corretamente!");
+                alert("Email já está em uso!");
             })
     }
     const handleShow = () => {
