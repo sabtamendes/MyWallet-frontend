@@ -29,7 +29,7 @@ export default function SignUp() {
             })
             .catch(err => {
                 console.log(err.response.data);
-                alert("Verifique se os dados foram digitados corretamente!");
+                alert("Verifique se o seu email foi digitado corretamente!");
             })
     }
     const handleShow = () => {
