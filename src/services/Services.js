@@ -6,8 +6,8 @@ function postSignUp(body) {
 function postSignIn(body) {
     return axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-in`, body);
 }
-function postSignOut(config){
-    return axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-out`, config);
+function deleteSignOut(config){
+    return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/sign-out`, config);
 }
 function getRegistries(config) {
     return axios.get(`${process.env.REACT_APP_API_BASE_URL}/transactions`, config);
@@ -27,7 +27,7 @@ function deleteTransactionsDebit(id, config){
 export {
     postSignUp,
     postSignIn,
-    postSignOut,
+    deleteSignOut,
     getRegistries,
     postNewRegistries,
     postOutRegistries,

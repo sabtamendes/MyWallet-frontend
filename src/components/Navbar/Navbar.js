@@ -3,21 +3,40 @@ import { IoExitOutline } from "react-icons/io5";
 import { useContext, useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import { deleteSignOut } from "../../services/Services";
 
 export default function Navbar() {
     const { userData } = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!localStorage.getItem("token")) {
-            navigate("/");
-        }
-    })
+         if (!localStorage.getItem("token")) {
+             navigate("/");
+         }
+     })
+    
+async function logginOut(){
 
+    const config = {
+        headers: {
+            Authorization: `Bearer ${userData.token}`
+        }
+    }
+  await  deleteSignOut(config)
+    .then(res => {
+        console.log(res.status, res.data, "aquii")
+        localStorage.removeItem("token");
+       setTimeout(navigate("/"), 0);
+    })
+    .catch(err => {
+        console.error(err)
+       
+    })
+}
     return (
         <Header>
-            <span>Olá, {userData.name}</span>
-            <IoExitOutline color="#ffffff" size="37px" onClick={() => { localStorage.removeItem("token") }} />
+            <span>Olá, {userData.name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</span>
+            <IoExitOutline color="#ffffff" size="37px"  onClick={logginOut}/>
         </Header>
     )
 }
