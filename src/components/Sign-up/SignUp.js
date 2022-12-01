@@ -50,6 +50,8 @@ export default function SignUp() {
         <Container>
             <Title>MyWallet</Title>
             <Form onSubmit={handleSubmit}>
+
+                <Box>
                 <input
                     name="name"
                     value={form.name}
@@ -58,6 +60,9 @@ export default function SignUp() {
                     placeholder="Nome"
                     required
                 />
+                </Box>
+
+                <Box>
                 <input
                     name="email"
                     value={form.email}
@@ -66,6 +71,9 @@ export default function SignUp() {
                     placeholder="E-mail"
                     required
                 />
+               </Box>
+
+               <Box>
                 <input
                     name="password"
                     value={form.password}
@@ -75,6 +83,9 @@ export default function SignUp() {
                     required
                 />
                 <IconOne onClick={handleShow}>{showOne ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconOne>
+                </Box>
+
+                <Box>
                 <input
                     name="confirmPassword"
                     value={form.confirmPassword}
@@ -84,6 +95,8 @@ export default function SignUp() {
                     required
                 />
                 <IconTwo onClick={handleShowTwo}>{showTwo ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconTwo>
+                </Box>
+
                 <button type="submit">Cadastrar</button>
 
                 <StyledLink to={"/"}>
@@ -95,25 +108,12 @@ export default function SignUp() {
     )
 }
 const Container = styled.div`
-    height: 210vw;
+    height: 215vw;
     padding:15%;
     background-color: #8C11BE;
 `
 const Form = styled.form`
     margin-top: 80px;
-    input{
-    margin-left: -5%;
-    margin-bottom: 4%;
-    width:38vh;
-    padding: 15px; 
-    border:1px solid #D4D4D4;
-    border-radius: 5px;
-    &::placeholder{
-    font-family: 'Raleway', sans-serif;
-    font-size:16px;
-    color:#000000;
-        }
-    }
     button{
     margin-left: -5%;
     margin-bottom:15%;
@@ -126,6 +126,22 @@ const Form = styled.form`
     border-radius: 5px;
     border:none;
     }
+`
+const Box = styled.div`
+position:relative;
+input{
+    margin-left: -5%;
+    margin-bottom: 4%;
+    width:38vh;
+    padding: 15px; 
+    border:1px solid #D4D4D4;
+    border-radius: 5px;
+    &::placeholder{
+    font-family: 'Raleway', sans-serif;
+    font-size:16px;
+    color:#000000;
+    }
+}
 `
 const Title = styled.h1`
     display:flex;
@@ -145,17 +161,13 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
 `
-const IconOne = styled.span`
-    position:absolute;
-    top:43%;
-    right: 16%;
-    z-index:3;
-    padding-top:30px;
+const IconOne = styled.i`
+position:absolute;
+top:25%;
+right: -6%;
 `
-const IconTwo = styled.span`
-    position:absolute;
-    top:51.2%;
-    right: 16%;
-    z-index:3;
-    padding-top:30px;
+const IconTwo = styled.i`
+position:absolute;
+top:25%;
+right: -6%;
 `
