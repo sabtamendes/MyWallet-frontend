@@ -35,7 +35,6 @@ export default function NewEnter() {
             navigate("/registros");
 
         } catch (err) {
-            console.log(err.response.data.message)
             alert(err.response.data.message);
         }
     }

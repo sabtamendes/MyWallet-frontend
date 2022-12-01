@@ -28,7 +28,7 @@ export default function Registries() {
                 setRegistries(data);
                 setLoading(false);
             } catch (err) {
-                console.log(err.response.data.message);
+                console.error(err);
             }
         }
         listRegistries();

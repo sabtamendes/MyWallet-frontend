@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postSignUp } from "../../services/Services";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-
+import swal from "sweetalert2";
 export default function SignUp() {
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
     const [showOne, setShowOne] = useState(false);
@@ -27,16 +27,20 @@ export default function SignUp() {
 
         postSignUp(body)
             .then(res => {
-                console.log(res.data.message);
                 navigate("/");
             })
             .catch(err => {
-                console.log(err.response.data);
-                if (err.response.data.message === "Email já está em uso!") {
-                    return alert("Email já está em uso!");
-                }
-                if (err.response.data.includes('"email" must be a valid email')) {
-                    return alert("Email deve ser um email válido!");
+                if(err.response.data.message === "Email já está em uso!" || err.response.data.includes('"email" must be a valid email')){
+                    return swal.fire({
+                        title: 'Digite um email válido!',
+                        icon: 'error',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
                 }
             })
     }

@@ -4,7 +4,7 @@ import UserContext from "../../contexts/UserContext";
 import { postSignIn } from "../../services/Services";
 import styled from "styled-components";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-
+import swal from "sweetalert2";
 export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -31,8 +31,17 @@ export default function SignIn() {
                 }
             })
             .catch(err => {
-                console.log(err.response.data);
-                alert("Verifique se o seu email ou senha estão corretos!");
+                console.error(err);
+                return swal.fire({
+                    title: 'Verifique se o seu email ou senha estão corretos!',
+                    icon: 'error',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
             })
     }
     const handleShow = () => {
