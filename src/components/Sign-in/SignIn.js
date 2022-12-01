@@ -44,38 +44,39 @@ export default function SignIn() {
             <Title>MyWallet</Title>
 
             <Form onSubmit={handleSubmit}>
-
-                <input
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    type="text"
-                    placeholder="E-mail"
-                    disabled={disabled}
-                    required
-                />
-                <input
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type={show ? "text" : "password"}
-                    placeholder="Senha"
-                    disabled={disabled}
-                    required
-                />
-                <span onClick={handleShow}>{show ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</span>
-
+                <Box>
+                    <input
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        placeholder="E-mail"
+                        disabled={disabled}
+                        required
+                    />
+                </Box>
+                <Box>
+                    <input
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        type={show ? "text" : "password"}
+                        placeholder="Senha"
+                        disabled={disabled}
+                        required
+                    />
+                    <Icon onClick={handleShow}>{show ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</Icon>
+                </Box>
                 <button type="submit" disabled={disabled}>Entrar</button>
             </Form>
-            
+
             <StyledLink to={"/cadastro"}>Primeira vez? Cadastre-se!</StyledLink>
 
         </Container>
     )
 }
-
 const Container = styled.div`
-    height: 210vw;
+    height: 215vw;
     padding:15%;
     background-color: #8C11BE;
 `
@@ -90,19 +91,6 @@ const Title = styled.h1`
 `
 const Form = styled.form`
    margin-top: 8vh;
-   input{
-   margin-left: -5%;
-   margin-bottom: 4%;
-   width:38vh;
-   padding: 15px; 
-   border:1px solid #D4D4D4;
-   border-radius: 5px;
-   &::placeholder{
-    font-family: 'Raleway', sans-serif;
-    font-size:16px;
-    color:#000000;
-   }
-}
 button{
     margin-left: -5%;
     margin-bottom:15%;
@@ -122,6 +110,27 @@ span{
     z-index:3;
     padding-top:30px;
 }
+`
+const Box = styled.div`
+position:relative;
+input{
+    margin-left: -5%;
+    margin-bottom: 4%;
+    width:38vh;
+    padding: 15px; 
+    border:1px solid #D4D4D4;
+    border-radius: 5px;
+    &::placeholder{
+     font-family: 'Raleway', sans-serif;
+     font-size:16px;
+     color:#000000;
+    }
+ }
+`
+const Icon = styled.i`
+position:absolute;
+top:25%;
+right: -6%;
 `
 const StyledLink = styled(Link)`
     margin-top:5%;
