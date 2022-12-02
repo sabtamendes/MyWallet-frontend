@@ -36,7 +36,7 @@ export default function NewOut() {
             navigate("/registros");
 
         } catch (err) {
-            console.log(err.response.data.message);
+            console.log(err);
             alert(err.response.data.message);
         }
     }
