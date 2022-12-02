@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
 import { postNewRegistries } from "../../services/Services";
-
+import { IoArrowUndoSharp } from "react-icons/io5"
 export default function NewEnter() {
     const [form, setForm] = useState({ value: "", description: "" });
 
@@ -40,8 +40,10 @@ export default function NewEnter() {
     }
     return (
         <Main>
-            <Title>Nova entrada</Title>
-
+            <Header>
+                <IoArrowUndoSharp color="#FFFFFF" size="25px" onClick={() => navigate("/registros")} />
+                <Title>Nova entrada</Title>
+            </Header>
             <Form onSubmit={handleSubmit}>
                 <input
                     name="value"
@@ -102,4 +104,8 @@ font-family: 'Raleway', sans-serif;
 font-size: 26px;
 color: #ffffff;
 font-weight: bold;
+margin-left: 25px;
+`
+const Header = styled.div`
+display: flex;
 `

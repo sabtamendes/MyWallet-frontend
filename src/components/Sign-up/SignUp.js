@@ -167,11 +167,11 @@ font-family: 'Raleway', sans-serif;
 `
 const IconOne = styled.i`
 position:absolute;
-top:25%;
+top:22%;
 right: -6%;
 `
 const IconTwo = styled.i`
 position:absolute;
-top:25%;
+top:22%;
 right: -6%;
 `

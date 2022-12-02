@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { IoArrowUndoSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
@@ -41,8 +42,11 @@ export default function NewOut() {
     }
     return (
         <Container>
-            <Title>Nova saída</Title>
-
+            
+            <Header>
+                <IoArrowUndoSharp color="#FFFFFF" size="25px" onClick={() => navigate("/registros")} />
+                <Title>Nova saída</Title>
+            </Header>
             <Form onSubmit={handleSubmit}>
                 <input
                     name="value"
@@ -90,12 +94,11 @@ const Form = styled.form`
     margin-bottom:15%;
     width:38vh;
     padding: 15px;
-    font-weight: bold;
+    font-weight:600;
     font-size: 15px;
     color: #FFFFFF;
     background-color:#A328D6;
     border-radius: 5px;
-    font-family: 'Raleway', sans-serif;
     border:none;
     }
 `
@@ -104,4 +107,8 @@ font-family: 'Raleway', sans-serif;
 font-size: 26px;
 color: #ffffff;
 font-weight: bold;
+margin-left: 43px;
+`
+const Header = styled.div`
+display: flex;
 `

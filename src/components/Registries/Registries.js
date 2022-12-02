@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../Navbar/Navbar";
-import { IoAddCircleOutline } from "react-icons/io5";
-import { IoRemoveCircleOutline } from "react-icons/io5";
+import { IoAddCircleOutline, IoRemoveCircleOutline  } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../contexts/UserContext";
