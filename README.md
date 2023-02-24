@@ -2,7 +2,7 @@
 <details>
 <summary>Documentação do Projeto</summary>
 
-Este é um projeto em React que utiliza JavaScript, React e Styled Components para criar uma aplicação web responsiva.
+Este é um projeto em React que utiliza JavaScript, React e Styled Components para criar uma aplicação mobile que simula um gerenciador de gastos, onde pode ser inserido os ganhos e gastos do usuário.
 </details>
 <details>
 <summary>Instalação</summary>
