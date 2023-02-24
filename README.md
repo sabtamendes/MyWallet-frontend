@@ -20,6 +20,10 @@ Em seguida, instale as dependências usando o gerenciador de pacotes de sua esco
 ```
 npm install
 ```
+Crie um arquivo <span style="color: green"> .env </span> na raiz do projeto e defina as seguintes variáveis de ambiente:
+
+      REACT_APP_BASE_URL=<URL_BASE_DA_API>
+
 </details>
 
 
@@ -36,6 +40,7 @@ Isso irá iniciar um servidor de desenvolvimento em **localhost:3000**, onde voc
 
 <details>
 <summary>Tecnologias Utilizadas</summary>
+
 - ReactJS 18.0.2
 - Axios 1.1.3
 - Day.js 1.11.6
@@ -91,7 +96,6 @@ A estrutura do projeto é organizada da seguinte maneira:
 
 <details>
 <summary>Descrição dos Componentes</summary>
-Loading
 
 - O componente **Loading** é responsável por exibir um spinner enquanto a aplicação está carregando. Ele utiliza a biblioteca React-Loader-Spinner para exibir o spinner.
 Navbar
