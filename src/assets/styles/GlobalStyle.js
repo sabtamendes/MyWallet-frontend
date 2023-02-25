@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-@media(max-width:414px){
 *{
 	box-sizing: border-box;
 }
@@ -19,7 +18,6 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
-	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
@@ -49,6 +47,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-}
+
 `
+
+
 export default GlobalStyle;
