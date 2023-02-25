@@ -101,7 +101,10 @@ export default function SignUp() {
             <IconTwo onClick={handleShowTwo}>{showTwo ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</IconTwo>
             </Box>
 
+            <Box>
             <button type="submit">Cadastrar</button>
+            </Box>
+            
 
             <StyledLink to={"/"}>
                 Já tem uma conta? Entre agora!
@@ -112,66 +115,82 @@ export default function SignUp() {
 )
 }
 const Container = styled.div`
-height: 215vw;
-padding:15%;
+width: 100%;
+padding: 10px;
+height: 100vh;
 background-color: #8C11BE;
 `
 const Form = styled.form`
-margin-top: 80px;
-button{
-margin-left: -5%;
-margin-bottom:15%;
-width:38vh;
-padding: 15px;
-font-weight:600;
-font-size: 15px;
-color: #FFFFFF;
-background-color:#A328D6;
-border-radius: 5px;
-border:none;
-}
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18vh;
+  button {
+    margin-top: 6%;
+    width: 38vh;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #a328d6;
+    border-radius: 5px;
+    border: none;
+    cursor:pointer;
+  }
 `
 const Box = styled.div`
-position:relative;
-input{
-margin-left: -5%;
-margin-bottom: 4%;
-width:38vh;
-padding: 15px; 
-border:1px solid #D4D4D4;
-border-radius: 5px;
-&::placeholder{
-font-family: 'Raleway', sans-serif;
-font-size:16px;
-color:#000000;
-}
-}
+  position: relative;
+  input {
+    margin-bottom: 4%;
+    width: 38vh;
+    padding: 15px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 16px;
+      color: #000000;
+    }
+  }
 `
 const Title = styled.h1`
-display:flex;
-justify-content: center;
-align-items: center;
-margin-top:50px;
-font-size:35px;
-color: #FFFFFF;
-font-family: 'Saira Stencil One', cursive;
+@media (max-width: 900px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25%;
+  font-size: 35px;
+  color: #ffffff;
+  font-family: "Saira Stencil One", cursive;
+ }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  font-size: 35px;
+  color: #ffffff;
+  font-family: "Saira Stencil One", cursive;
 `
 const StyledLink = styled(Link)`
-margin-top:5%;
-margin-left:12%;
-font-size:15px;
-font-weight: bold;
-color: #FFFFFF;
-text-decoration: none;
-font-family: 'Raleway', sans-serif;
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
 `
 const IconOne = styled.i`
 position:absolute;
 top:22%;
-right: -6%;
+right: 9%;
 `
 const IconTwo = styled.i`
 position:absolute;
 top:22%;
-right: -6%;
+right: 9%;
 `

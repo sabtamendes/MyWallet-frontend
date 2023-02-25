@@ -101,7 +101,7 @@ const Container = styled.div`
 `;
 const Title = styled.h1`
  @media (max-width: 900px) {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 25%;
@@ -119,7 +119,7 @@ const Title = styled.h1`
 `;
 const Form = styled.form`
   @media (max-width: 900px) {
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -186,7 +186,7 @@ const Box = styled.div`
 const Icon = styled.i`
   position: absolute;
   top: 25%;
-  right: 6%;
+  right: 5%;
   cursor: pointer;
 `;
 const StyledLink = styled(Link)`
