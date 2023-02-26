@@ -187,10 +187,10 @@ const StyledLink = styled(Link)`
 const IconOne = styled.i`
 position:absolute;
 top:22%;
-right: 9%;
+right: 7%;
 `
 const IconTwo = styled.i`
 position:absolute;
 top:22%;
-right: 9%;
+right: 7%;
 `

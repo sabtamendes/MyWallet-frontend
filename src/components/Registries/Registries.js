@@ -57,7 +57,7 @@ export default function Registries() {
                     </ListTransactions>
                 }
 
-                <Rodape>
+                 <Rodape>
                     <Link to="/novaentrada">
                         <EnterBox>
                             <IoAddCircleOutline color="#ffffff" size="30px" />
@@ -71,7 +71,7 @@ export default function Registries() {
                             <p>Nova saída</p>
                         </OutBox>
                     </Link>
-                </Rodape>
+                </Rodape> 
 
             </Container>
         </>
@@ -80,11 +80,12 @@ export default function Registries() {
 
 const Container = styled.div`
 background-color: #8C11BE;
-height: 120vh;
-position: fixed;
+//height: 120vh;
+height: 100vh;
+/* position: fixed;
 right:0;
 left:0;
-top: 0;
+top: 0; */
 `
 const ListTransactionsEmpty = styled.div`
 display: flex;
@@ -102,7 +103,7 @@ border-radius: 5px;
 background-color: #ffffff;
 color: #868686;
 font-family: Raleway;
-fon-size:20px;
+font-size:20px;
 span{
     display:flex;
     justify-content: center;
@@ -110,14 +111,20 @@ span{
 }
 `
 const ListTransactions = styled.div`
-height: 62vh;
-padding-top:18px;
+width: 60%;
+height: 50vh;
+padding-top: 5%;
+position:fixed;
+top: 15%;
+left: 20%;
+
+/* padding-top:18px;
 padding-left: 32px;
 margin-top: 120px;
 margin-right: 25px;
-margin-left: 25px;
-margin-bottom: 50px;
-border-radius: 5px;
+margin-left: 80%;
+margin-bottom: 50px;  */
+border-radius: 10px;
 background-color: #ffffff;
 color: #868686;
 font-family: Raleway;
@@ -128,7 +135,6 @@ background-color: #8C11BE;
 position:fixed;
 z-index: 1;
 bottom: 0;
-right:0;
 display: flex;
 justify-content: space-between;
 `
@@ -138,8 +144,8 @@ border-radius: 5px;
 border: none;
 position: fixed;
 bottom:0;
-margin-left: 3vh;
-margin-bottom: 15px;
+margin-left: 42vh;
+margin-bottom: 10vh;
 width: 20vh;
 height: 18vh;
 display:flex;
@@ -163,13 +169,13 @@ const OutBox = styled.button`
 background-color: #A328D6;
 border-radius: 5px;
 border: none;
-margin-bottom: 15px;
+margin-bottom: 10vh;
 margin-right: 3.5vh;
-width: 20vh;
+width: 42vh;
 height: 18vh;
 position:fixed;
 bottom: 0;
-right: 0;
+right: 18%;
 display:flex;
 flex-direction: column;
 justify-content:space-between;

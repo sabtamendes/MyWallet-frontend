@@ -17,7 +17,7 @@ export default function Registrie({ registries }) {
                         <ListDescription>{description}</ListDescription>
                         <ListValue type={type}>{value?.toFixed(2).replace(".", ",")}</ListValue>
                         <Icon>
-                            <IoCloseOutline color="#6b9080" size="20px" />
+                            <IoCloseOutline color="#6b9080" size="23px" />
                         </Icon>
                     </List>))
                 : ""
@@ -34,10 +34,10 @@ export default function Registrie({ registries }) {
 }
 
 const List = styled.div`
-     margin-bottom:-6%;
+     margin-bottom:-7%;
      width: 30vh;
      height: 6vh;
-     font-size: 16px;
+     font-size: 18px;
      background-color:#ffffff;
      border-radius: 5px;
      border:none;
@@ -45,11 +45,11 @@ const List = styled.div`
  `
 const Icon = styled.span`
 position:fixed;
-right: 35px;
+right: 22%;
 `
 const ListDate = styled.span`
 color: #6b9080;
-margin-left: -20px;
+margin-left: 32px;
 margin-right: 20px;
 `
 const ListDescription = styled.span`
@@ -60,7 +60,7 @@ max-width:40vw;
 `
 const ListValue = styled.p`
 position:fixed;
-right: 60px;
+right: 25%;
 word-break: break-all;
 max-width:40vw;
 color: ${props => props.type === "debit" ? "#C70000" : "#03AC00"};
@@ -80,11 +80,13 @@ color: #000000;
 p{
 font-weight: 800;
 position:fixed;
-left: 5vh;
+left: 25.2%;
+bottom: 38%;
  }
 span{
 position:fixed;
-left: 35vh;
+bottom: 38%;
+right: 25.5%;
 font-weight: 500;
 color:#03AC00;
  }

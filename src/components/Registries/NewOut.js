@@ -42,7 +42,7 @@ export default function NewOut() {
     }
     return (
         <Container>
-            
+
             <Header>
                 <IoArrowUndoSharp color="#FFFFFF" size="25px" onClick={() => navigate("/registros")} />
                 <Title>Nova saída</Title>
@@ -64,51 +64,184 @@ export default function NewOut() {
                     placeholder="Descrição"
                     required
                 />
-                <button type="submit">Salvar saída</button>
+                <Button type="submit">Salvar saída</Button>
             </Form>
         </Container>
     )
 }
 const Container = styled.div`
-    height: 210vw;
-    padding:15%;
-    background-color: #8C11BE;
-`
-const Form = styled.form`
-    margin-top: 80px;
-    input{
-    margin-left: -5%;
-    margin-bottom: 4%;
-    width:38vh;
-    padding: 15px; 
-    border:1px solid #D4D4D4;
-    border-radius: 5px;
-    &::placeholder{
-    font-family: 'Raleway', sans-serif;
-    font-size:16px;
-    color:#000000;
-        }
-    }
-    button{
-    margin-left: -5%;
-    margin-bottom:15%;
-    width:38vh;
-    padding: 15px;
-    font-weight:600;
-    font-size: 15px;
-    color: #FFFFFF;
-    background-color:#A328D6;
-    border-radius: 5px;
-    border:none;
-    }
-`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #8c11be;
+`;
+const Header = styled.div`
+position:fixed;
+top: 6%;
+display:flex;
+margin-right: 24%;
+margin-bottom: 3%;
+@media (max-width: 1000px) {
+position:fixed;
+top: 5%;
+display:flex;
+margin-right: 29%;
+margin-bottom: 5%;  
+}
+@media (max-width: 900px) {
+position:fixed;
+top: 5%;
+display:flex;
+margin-right: 39%;
+margin-bottom: 5%;  
+}
+@media (max-width: 600px) {
+position:fixed;
+top: 5%;
+display:flex;
+margin-right: 48%;
+margin-bottom: 5%;  
+}
+`;
 const Title = styled.h1`
 font-family: 'Raleway', sans-serif;
 font-size: 26px;
 color: #ffffff;
 font-weight: bold;
-margin-left: 43px;
-`
-const Header = styled.div`
-display: flex;
-`
+margin-left: 25px;
+@media (max-width: 1800px) {
+font-family: 'Raleway', sans-serif;
+font-size: 26px;
+color: #ffffff;
+font-weight: bold;
+margin-left: 18px;
+}
+@media (max-width: 900px) {
+font-family: 'Raleway', sans-serif;
+font-size: 26px;
+color: #ffffff;
+font-weight: bold;
+margin-left: 20px;
+}
+@media (max-width: 600px) {
+font-family: 'Raleway', sans-serif;
+font-size: 26px;
+color: #ffffff;
+font-weight: bold;
+margin-left: 10px;
+}
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  top: 22%;
+  input {
+   border-radius: 5px;
+   border:none;
+   padding-right: 19vw;
+   padding-top: 1.2vw;
+   padding-bottom: 1.2vw;
+   margin-top: 2%;
+   margin-bottom: 5%;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      color: #000000;
+    }
+  }
+  @media (max-width: 1500px) {
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  top: 20%;
+  input {
+   border-radius: 5px;
+   border:none;
+   padding-right: 18vw;
+   padding-top: 1.5vw;
+   padding-bottom: 1.5vw;
+   margin-top: 2%;
+   margin-bottom: 5%;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      color: #000000;
+    }
+  }
+}
+@media (max-width: 900px) {
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  top: 15%;
+  input {
+   border-radius: 5px;
+   border:none;
+   padding-right: 28vw;
+   padding-top: 2.2vw;
+   padding-bottom: 2.2vw;
+   margin-top: 2%;
+   margin-bottom: 5%;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      color: #000000;
+    }
+  }
+}
+@media (max-width: 600px) {
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  top: 15%;
+  input {
+   border-radius: 5px;
+   border:none;
+   padding-right: 28vw;
+   padding-top: 3.5vw;
+   padding-bottom: 3.5vw;
+   margin-top: 2%;
+   margin-bottom: 5%;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      color: #000000;
+    }
+  }
+}
+`;
+const Button = styled.button`
+  color: #FFFFFF;
+  background-color:#A328D6;
+  border-radius: 5px;
+  border:none;
+  font-weight:600;
+  font-size: 18px;
+  padding: 3.5% 30%;
+  white-space: nowrap;
+
+  @media (max-width: 1500px) {
+  color: #FFFFFF;
+  background-color:#A328D6;
+  border-radius: 5px;
+  border:none;
+  font-weight:600;
+  font-size: 18px;
+  padding-top: 3.8%;
+  padding-bottom: 3.8%;
+  white-space: nowrap;
+}
+  @media (max-width: 900px) {
+  color: #FFFFFF;
+  background-color:#A328D6;
+  border-radius: 5px;
+  border:none;
+  font-weight:600;
+  font-size: 18px;
+  padding: 3.5% 4%;
+  white-space: nowrap;
+}
+`;

@@ -36,7 +36,7 @@ async function logginOut(){
     return (
         <Header>
             <span>Olá, {userData.name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</span>
-            <IoExitOutline color="#ffffff" size="37px"  onClick={logginOut}/>
+            <Icon  onClick={logginOut}/>
         </Header>
     )
 }
@@ -51,14 +51,52 @@ height: 10vh;
 background-color: #8C11BE;
 display: flex;
 justify-content: space-between;
-padding-top: 40px;
+/* padding-top: 40px;
 padding-left: 25px;
-padding-right: 25px;
+padding-right: 25px; */
 span{
+    margin-top: 2%;
+    margin-left:20%;
     font-family: Raleway;
     font-size: 26px;
     color: #ffffff;
     font-weight: bold;
     padding-top:10px;
+}
+@media (max-width: 900px) {
+position: fixed;
+top: 0;
+left:0;
+z-index: 2;
+width: 100%;
+height: 10vh;
+background-color: #8C11BE;
+display: flex;
+justify-content: space-between;
+/* padding-top: 40px;
+padding-left: 25px;
+padding-right: 25px; */
+span{
+    margin-top: 2%;
+    margin-left:8%;
+    font-family: Raleway;
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: bold;
+    padding-top:10px;
+} 
+}
+`
+const Icon = styled(IoExitOutline)`
+margin-top: 2.3%;
+margin-right: 20%;
+color: #ffffff;
+font-size: 37px;
+
+@media (max-width: 900px) {
+margin-top: 2.8%;
+margin-right: 8%;
+color: #ffffff;
+font-size: 37px; 
 }
 `
