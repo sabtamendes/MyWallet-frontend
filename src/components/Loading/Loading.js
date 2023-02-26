@@ -20,8 +20,9 @@ export default function Loading() {
 const Container = styled.div`
 background-color: #8C11BE;
 width:100%;
-height:120vh;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+overflow: hidden;
 `

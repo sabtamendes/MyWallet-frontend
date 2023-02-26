@@ -44,7 +44,7 @@ export default function NewOut() {
         <Container>
             
             <Header>
-                <IoArrowUndoSharp color="#FFFFFF" size="25px" onClick={() => navigate("/registros")} />
+                <Icon color="#FFFFFF" size="25px" onClick={() => navigate("/registros")} />
                 <Title>Nova saída</Title>
             </Header>
             <Form onSubmit={handleSubmit}>
@@ -70,45 +70,109 @@ export default function NewOut() {
     )
 }
 const Container = styled.div`
-    height: 210vw;
-    padding:15%;
-    background-color: #8C11BE;
-`
-const Form = styled.form`
-    margin-top: 80px;
-    input{
-    margin-left: -5%;
-    margin-bottom: 4%;
-    width:38vh;
-    padding: 15px; 
-    border:1px solid #D4D4D4;
-    border-radius: 5px;
-    &::placeholder{
-    font-family: 'Raleway', sans-serif;
-    font-size:16px;
-    color:#000000;
-        }
-    }
-    button{
-    margin-left: -5%;
-    margin-bottom:15%;
-    width:38vh;
-    padding: 15px;
-    font-weight:600;
-    font-size: 15px;
-    color: #FFFFFF;
-    background-color:#A328D6;
-    border-radius: 5px;
-    border:none;
-    }
-`
-const Title = styled.h1`
-font-family: 'Raleway', sans-serif;
-font-size: 26px;
-color: #ffffff;
-font-weight: bold;
-margin-left: 43px;
-`
+  height: 100vh;
+  overflow: hidden;
+  background-color: #8c11be;
+`;
 const Header = styled.div`
-display: flex;
-`
+  display: flex;
+`;
+const Title = styled.h1`
+  font-family: "Raleway", sans-serif;
+  font-size: 26px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-top: 10%;
+`;
+const Icon = styled(IoArrowUndoSharp)`
+  margin-top: 10%;
+  margin-right: 5%;
+  margin-left: 6.5%;
+`;
+const Form = styled.form`
+  position: fixed;
+  left: 17%;
+  margin-top: 80px;
+  input {
+    margin-bottom: 4%;
+    width: 38vh;
+    padding: 15px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 16px;
+      color: #000000;
+    }
+  }
+  button {
+    margin-bottom: 15%;
+    width: 38vh;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #a328d6;
+    border-radius: 5px;
+    border: none;
+  }
+  @media (max-width: 375px) {
+    position: fixed;
+    left: 18%;
+    margin-top: 80px;
+    input {
+      margin-bottom: 4%;
+      width: 36vh;
+      padding: 15px;
+      border: 1px solid #d4d4d4;
+      border-radius: 5px;
+      &::placeholder {
+        font-family: "Raleway", sans-serif;
+        font-size: 16px;
+        color: #000000;
+      }
+    }
+    button {
+      margin-bottom: 15%;
+      width: 36vh;
+      padding: 15px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #ffffff;
+      background-color: #a328d6;
+      border-radius: 5px;
+      border: none;
+    }
+  }
+  @media (max-width: 444px) {
+    position: fixed;
+    left: 13%;
+    margin-top: 80px;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    input {
+      margin-bottom: 4%;
+      width: 36vh;
+      padding: 15px;
+      border: 1px solid #d4d4d4;
+      border-radius: 5px;
+      &::placeholder {
+        font-family: "Raleway", sans-serif;
+        font-size: 16px;
+        color: #000000;
+      }
+    }
+    button {
+      margin-bottom: 15%;
+      width: 36vh;
+      padding: 15px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #ffffff;
+      background-color: #a328d6;
+      border-radius: 5px;
+      border: none;
+    }
+  }
+`;

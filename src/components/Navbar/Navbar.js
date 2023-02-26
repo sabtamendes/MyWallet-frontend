@@ -24,7 +24,6 @@ async function logginOut(){
     }
   await  deleteSignOut(config)
     .then(res => {
-        console.log(res.status, res.data, "aquii")
         localStorage.removeItem("token");
        setTimeout(navigate("/"), 0);
     })
@@ -51,7 +50,7 @@ height: 10vh;
 background-color: #8C11BE;
 display: flex;
 justify-content: space-between;
-padding-top: 40px;
+padding-top: 25px;
 padding-left: 25px;
 padding-right: 25px;
 span{

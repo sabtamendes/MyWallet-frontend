@@ -7,7 +7,10 @@ export default function Registrie({ registries }) {
     if (registries === undefined) {
         return <Loading />
     }
-
+    const balance = registries
+    .map((item) => (item.type === "credit" ? +item.value : -item.value))
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+   
     return (
         <>
             {registries
@@ -22,13 +25,9 @@ export default function Registrie({ registries }) {
                     </List>))
                 : ""
             }
-            <Balance registries={registries}><p>SALDO : </p><span>{registries.map((item) => {
-                if (item.type === "credit") {
-                    return +item.value;
-                } else {
-                    return -item.value;
-                }
-            }).reduce((previousValue, currentValue) => previousValue + currentValue, 0).toFixed(2).replace(".", ",")}</span></Balance>
+            <Balance value={balance}>
+            <p>SALDO : </p> 
+            <span>{balance.toFixed(2).replace(".", ",")}</span></Balance>
         </>
     )
 }
@@ -72,7 +71,7 @@ justify-content: space-between;
 word-break: break-all;
 max-width:50vw;
 position:fixed;
-top:30vh;
+top:24vh;
 padding: 12px;
 margin-top: 42vh;
 font-size: 18px;
@@ -84,9 +83,32 @@ left: 5vh;
  }
 span{
 position:fixed;
-left: 35vh;
+left: 30vh;
 font-weight: 500;
-color:#03AC00;
+color: ${(props) => (props.value < 0 ? "#C70000" : "#03AC00")};
+ }
+@media(max-width:380 ){
+display: flex;
+justify-content: space-between;
+word-break: break-all;
+max-width:50vw;
+position:fixed;
+top:24vh;
+padding: 12px;
+margin-top: 42vh;
+font-size: 18px;
+color: #000000;
+p{
+font-weight: 800;
+position:fixed;
+left: 5vh;
+ }
+span{
+position:fixed;
+left: 32vh;
+font-weight: 500;
+color: ${(props) => (props.value < 0 ? "#ff0000" : "#00ff00")};
+ }
  }
 `
 

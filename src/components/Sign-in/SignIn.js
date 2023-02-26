@@ -76,7 +76,9 @@ export default function SignIn() {
                     />
                     <Icon onClick={handleShow}>{show ? <IoEyeOutline color="#000000" size="20px" /> : <IoEyeOffOutline color="#000000" size="20px" />}</Icon>
                 </Box>
+                <Box>
                 <button type="submit" disabled={disabled}>Entrar</button>
+                </Box>
             </Form>
 
             <StyledLink to={"/cadastro"}>Primeira vez? Cadastre-se!</StyledLink>
@@ -85,9 +87,10 @@ export default function SignIn() {
     )
 }
 const Container = styled.div`
-    height: 215vw;
-    padding:15%;
-    background-color: #8C11BE;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #8c11be;
 `
 const Title = styled.h1`
     display:flex;
@@ -99,10 +102,13 @@ const Title = styled.h1`
     font-family: 'Saira Stencil One', cursive;
 `
 const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
    margin-top: 8vh;
 button{
-    margin-left: -5%;
-    margin-bottom:15%;
+    margin-top: 6%;
     width:38vh;
     padding: 15px;
     font-weight:600;
@@ -121,32 +127,33 @@ span{
 }
 `
 const Box = styled.div`
-position:relative;
-input{
-    margin-left: -5%;
+position: relative;
+  input {
     margin-bottom: 4%;
-    width:38vh;
-    padding: 15px; 
-    border:1px solid #D4D4D4;
+    width: 38vh;
+    padding: 15px;
+    border: 1px solid #d4d4d4;
     border-radius: 5px;
-    &::placeholder{
-     font-family: 'Raleway', sans-serif;
-     font-size:16px;
-     color:#000000;
+    &::placeholder {
+      font-family: "Raleway", sans-serif;
+      font-size: 16px;
+      color: #000000;
     }
- }
+}
 `
 const Icon = styled.i`
 position:absolute;
 top:25%;
-right: -6%;
+right: 6%;
 `
 const StyledLink = styled(Link)`
-    margin-top:5%;
-    margin-left:18.5%;
-    font-size:15px;
-    font-weight: bold;
-    color: #ffffff;
-    font-family: 'Raleway', sans-serif;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
 `
