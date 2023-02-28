@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Navbar from "../Navbar/Navbar";
-import { IoAddCircleOutline, IoRemoveCircleOutline  } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import { getRegistries } from "../../services/Services";
 import Registrie from "./Registrie";
 import Loading from "../Loading/Loading";
+import Footer from "../Footer/Footer";
 
 
 export default function Registries() {
@@ -57,21 +56,7 @@ export default function Registries() {
                     </ListTransactions>
                 }
 
-                 <Rodape>
-                    <Link to="/novaentrada">
-                        <EnterBox>
-                            <IoAddCircleOutline color="#ffffff" size="30px" />
-
-                            <p>Nova entrada</p>
-                        </EnterBox>
-                    </Link>
-                    <Link to="/novasaida">
-                        <OutBox>
-                            <IoRemoveCircleOutline color="#ffffff" size="30px" />
-                            <p>Nova saída</p>
-                        </OutBox>
-                    </Link>
-                </Rodape> 
+                <Footer />
 
             </Container>
         </>
@@ -80,12 +65,7 @@ export default function Registries() {
 
 const Container = styled.div`
 background-color: #8C11BE;
-//height: 120vh;
 height: 100vh;
-/* position: fixed;
-right:0;
-left:0;
-top: 0; */
 `
 const ListTransactionsEmpty = styled.div`
 display: flex;
@@ -93,8 +73,6 @@ justify-content: center;
 align-items: center;
 height: 62vh;
 padding: 10%;
-// word-break: break-all;
-// max-width:40vw;
 margin-top: 120px;
 margin-right: 25px;
 margin-left: 25px;
@@ -113,83 +91,12 @@ span{
 const ListTransactions = styled.div`
 width: 60%;
 height: 50vh;
-padding-top: 5%;
+padding-top: 11%;
 position:fixed;
-top: 15%;
+top: 18%;
 left: 20%;
-
-/* padding-top:18px;
-padding-left: 32px;
-margin-top: 120px;
-margin-right: 25px;
-margin-left: 80%;
-margin-bottom: 50px;  */
 border-radius: 10px;
 background-color: #ffffff;
 color: #868686;
 font-family: Raleway;
-`
-const Rodape = styled.div`
-width:100%;
-background-color: #8C11BE;
-position:fixed;
-z-index: 1;
-bottom: 0;
-display: flex;
-justify-content: space-between;
-`
-const EnterBox = styled.button`
-background-color: #A328D6;
-border-radius: 5px;
-border: none;
-position: fixed;
-bottom:0;
-margin-left: 42vh;
-margin-bottom: 10vh;
-width: 20vh;
-height: 18vh;
-display:flex;
-flex-direction: column;
-justify-content:space-between;
-padding: 10px;
-p{
-    font-size: 15px;
-    font-weight: bold;
-    font-family: Raleway;
-    color: #ffffff;
-    line-break:strict;
-    word-break: break-all;
-    width: 55px;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-            word-break: break-word;
-}
-`
-const OutBox = styled.button`
-background-color: #A328D6;
-border-radius: 5px;
-border: none;
-margin-bottom: 10vh;
-margin-right: 3.5vh;
-width: 42vh;
-height: 18vh;
-position:fixed;
-bottom: 0;
-right: 18%;
-display:flex;
-flex-direction: column;
-justify-content:space-between;
-padding: 10px;
-p{
-    font-size: 15px;
-    font-weight: bold;
-    font-family: Raleway;
-    color: #ffffff;
-    line-break:strict;
-    word-break: break-all;
-    width: 55px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-}
 `

@@ -8,6 +8,15 @@ export default function Registrie({ registries }) {
         return <Loading />
     }
 
+    const balance = registries.map((item) => {
+        if (item.type === "credit") {
+            return +item.value;
+        } else {
+            return -item.value;
+        }
+    }).reduce((previousValue, currentValue) => previousValue + currentValue, 0).toFixed(2).replace(".", ",")
+    
+    
     return (
         <>
             {registries
@@ -22,13 +31,7 @@ export default function Registrie({ registries }) {
                     </List>))
                 : ""
             }
-            <Balance registries={registries}><p>SALDO : </p><span>{registries.map((item) => {
-                if (item.type === "credit") {
-                    return +item.value;
-                } else {
-                    return -item.value;
-                }
-            }).reduce((previousValue, currentValue) => previousValue + currentValue, 0).toFixed(2).replace(".", ",")}</span></Balance>
+            <Balance value={registries}><p>SALDO : </p><span>{balance}</span></Balance>
         </>
     )
 }
@@ -88,7 +91,7 @@ position:fixed;
 bottom: 38%;
 right: 25.5%;
 font-weight: 500;
-color:#03AC00;
+color: ${(props) => (props.value < 0 ? "#C70000" : "#03AC00")};
  }
 `
 
